@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>World Clock – Compare with IST</title>
+  <meta name="description" content="Digital world clock showing all country times compared with Indian Standard Time (IST). Search any country and see hours ahead or behind India."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <!-- Animated background -->
+  <div class="bg-orbs">
+    <div class="orb orb1"></div>
+    <div class="orb orb2"></div>
+    <div class="orb orb3"></div>
+  </div>
+
+  <header class="header">
+    <div class="header-inner">
+      <div class="logo">
+        <span class="logo-icon">🌍</span>
+        <div class="logo-text">
+          <h1>World Clock</h1>
+          <p>Live times compared with IST</p>
+        </div>
+      </div>
+      <div class="ist-badge">
+        <div class="ist-label">🇮🇳 India (IST)</div>
+        <div class="ist-time">
+          <span id="ist-time">--:--:--</span>
+          <span id="ist-ampm" class="ist-ampm"></span>
+        </div>
+        <div class="ist-date" id="ist-date">---</div>
+      </div>
+    </div>
+  </header>
+
+  <main class="main">
+    <!-- Stats bar -->
+    <div class="stats-bar">
+      <div class="stat"><span class="stat-num" id="total-count">0</span><span class="stat-label">Countries</span></div>
+      <div class="stat"><span class="stat-num" id="ahead-count">0</span><span class="stat-label">Ahead of IST</span></div>
+      <div class="stat"><span class="stat-num" id="behind-count">0</span><span class="stat-label">Behind IST</span></div>
+      <div class="stat"><span class="stat-num" id="same-count">0</span><span class="stat-label">Same as IST</span></div>
+    </div>
+
+    <!-- Search & Filter -->
+    <div class="search-section">
+      <div class="search-box">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="search-input" placeholder="Search country, city or timezone…" autocomplete="off"/>
+        <button class="clear-btn" id="clear-btn" onclick="clearSearch()">✕</button>
+      </div>
+      <div class="filter-tabs">
+        <button class="filter-tab active" onclick="setFilter('all', this)">All</button>
+        <button class="filter-tab" onclick="setFilter('ahead', this)">Ahead of IST</button>
+        <button class="filter-tab" onclick="setFilter('behind', this)">Behind IST</button>
+        <button class="filter-tab" onclick="setFilter('same', this)">Same as IST</button>
+      </div>
+    </div>
+
+    <!-- Results info -->
+    <div class="results-info" id="results-info"></div>
+
+    <!-- Clock Grid -->
+    <div class="clock-grid" id="clock-grid"></div>
+
+    <!-- No results -->
+    <div class="no-results hidden" id="no-results">
+      <div class="no-results-icon">🔍</div>
+      <h3>No results found</h3>
+      <p>Try searching with a different country or city name</p>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>🌐 Real-time world clocks · All times update every second · Compared with IST (UTC+5:30)</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
